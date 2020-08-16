@@ -115,13 +115,21 @@ public class ListDeduplication {
             }
             return false;
         }
+
+        @Override
+        public String toString() {
+            return "Pencil{" +
+                    "name='" + name + '\'' +
+                    ", color='" + color + '\'' +
+                    '}';
+        }
     }
 
     public static void main(String[] args) {
         ListDeduplication listDeduplication = new ListDeduplication();
         List<String> list = Arrays.asList("I love you but you do not love me".split(" "));
         List<String> mylists = new ArrayList<>();
-        
+
         listDeduplication.forDeduplication(list,mylists);
         mylists.forEach((data)-> System.out.print(data + " "));
         System.out.println();
@@ -136,14 +144,21 @@ public class ListDeduplication {
         mylists.forEach((data)-> System.out.print(data + " "));
         System.out.println();
 
-        mylists.clear();
-        listDeduplication.mapDeduplication(list,mylists);
-        mylists.forEach((data)-> System.out.print(data + " "));
+        List<Pencil> pencilList = new ArrayList<>();
+        pencilList.add(listDeduplication.new Pencil("smallPencil","red"));
+        pencilList.add(listDeduplication.new Pencil("mediumPencil","blue"));
+        pencilList.add(listDeduplication.new Pencil("bigPencil","red"));
+        pencilList.add(listDeduplication.new Pencil("smallPencil","red"));
+        pencilList.add(listDeduplication.new Pencil("smallPencil","green"));
+
+        List<Pencil> myPencilList = new ArrayList<>();
+        listDeduplication.mapDeduplication(pencilList,myPencilList);
+        myPencilList.forEach((data)-> System.out.print(data + " "));
         System.out.println();
 
-        mylists.clear();
-        listDeduplication.containsDeduplication(list,mylists);
-        mylists.forEach((data)-> System.out.print(data + " "));
+        myPencilList.clear();
+        listDeduplication.containsDeduplication(pencilList,myPencilList);
+        myPencilList.forEach((data)-> System.out.print(data + " "));
         System.out.println();
     }
 }
